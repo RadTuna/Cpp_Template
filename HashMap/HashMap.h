@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-
 enum { defaultReserve = 557, maxiamDepth = 1000 };
 
 // 해당 해쉬맵은 Modular Hashing을 사용한 해쉬맵입니다.
