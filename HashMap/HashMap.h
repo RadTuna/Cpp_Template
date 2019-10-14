@@ -1,3 +1,9 @@
+/*
+<SimpleHashMap>
+Date : 2019. 10. 13
+Author : RadTuna (ÀüÀç½Â)
+*/
+
 #pragma once
 
 enum { defaultReserve = 557, maxiamDepth = 1000 };
@@ -94,24 +100,28 @@ public:
 };
 
 template<typename V, typename K>
-class HashMap : public HashMapBase<V, K>
+class HashMap final : public HashMapBase<V, K>
 {
 public:
 
 	HashMap() : HashMapBase<V, K>() {}
 	HashMap(int reserve) : HashMapBase<V, K>(reserve) {}
+	HashMap(const HashMap& other) = delete;
 	~HashMap() = default;
+	HashMap& operator=(const HashMap& other) = delete;
 
 };
 
 template<typename V>
-class HashMap<V, char*> : public HashMapBase<V, char*>
+class HashMap<V, char*> final : public HashMapBase<V, char*>
 {
 public:
 
 	HashMap() : HashMapBase<V, char*>() {}
 	HashMap(int reserve) : HashMapBase<V, char*>(reserve) {}
+	HashMap(const HashMap& other) = delete;
 	~HashMap() = default;
+	HashMap& operator=(const HashMap& other) = delete;
 
 private:
 
