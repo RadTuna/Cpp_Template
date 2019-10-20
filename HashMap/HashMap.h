@@ -10,7 +10,7 @@ enum { defaultReserve = 557, maxiamDepth = 1000 };
 
 // 해당 해쉬맵은 Modular Hashing을 사용한 해쉬맵입니다.
 // 해쉬 충돌이 발생할 경우 해당 버킷에 링크드리스트 구조를 만들어 회피합니다. (싱글 링크 사용)
-template<typename V, typename K>
+template<typename K, typename V>
 class HashMapBase
 {
 private:
@@ -36,22 +36,22 @@ public:
 	HashMapBase& operator=(const HashMapBase& other) = delete;
 
 	/*
-	@ key : 입력되는 해쉬 키 입니다.
-	@ value : 입력 되는 데이터 입니다.
+	@ param key : 입력되는 해쉬 키 입니다.
+	@ param value : 입력 되는 데이터 입니다.
 	@ return : 해쉬 충돌이 없으면 true, 충돌로 인해 링크드 리스트로 저장되었으면 false.
 	*/
 	// 해쉬키에 따라 버킷에 쌍으로 저장하는 함수입니다.
 	bool Add(K key, V value);
 
 	/*
-	@ key : 입력되는 해쉬 키 입니다.
+	@ param key : 입력되는 해쉬 키 입니다.
 	@ return : 제거에 성공했으면 true, 실패했으면 false.
 	*/
 	// 해쉬 키에 맞는 노드를 제거합니다.
 	bool Remove(K key);
 
 	/*
-	@ key : 입력되는 해쉬 키 입니다.
+	@ param key : 입력되는 해쉬 키 입니다.
 	@ outValue
 	*/
 	bool GetValue(K key, V* outValue);
@@ -62,23 +62,23 @@ public:
 private:
 
 	/*
-	@ key : 입력된 해쉬 키 입니다.
+	@ param key : 입력된 해쉬 키 입니다.
 	@ return : 해싱 함수를 거친 배열 인덱스 입니다.
 	*/
 	// 해쉬 키를 배열 인덱스로 변환하는 해싱함수 입니다.
 	virtual unsigned int GetHashIndex(K key);
 
 	/*
-	@ index : 탐색을 원하는 배열의 인덱스를 입력합니다.
-	@ outPtr : 해당 배열의 링크드 리스트의 마지막 노드의 포인터를 반환합니다.
+	@ param index : 탐색을 원하는 배열의 인덱스를 입력합니다.
+	@ param outPtr : 해당 배열의 링크드 리스트의 마지막 노드의 포인터를 반환합니다.
 	@ return : 링크드 리스트의 Depth가 1000 이상이면 종료하고 false를 반환합니다.
 	*/
 	// 해쉬맵 단일 버킷의 링크드 리스트 마지막 노드를 반환하는 함수
 	bool GetLastData(int index, Data** outPtr);
 
 	/*
-	@ prevNode : 링크드 리스트의 이전 노드를 입력합니다.
-	@ curNode : 링크드 리스트의 현재 노드를 입력합니다.
+	@ param prevNode : 링크드 리스트의 이전 노드를 입력합니다.
+	@ param curNode : 링크드 리스트의 현재 노드를 입력합니다.
 	*/
 	// 링크드 리스트 구조에서 중간노드를 제거할 때 호출합니다.
 	void LinkRemove(Data* prevNode, Data* curNode);
@@ -99,13 +99,13 @@ public:
 
 };
 
-template<typename V, typename K>
-class HashMap final : public HashMapBase<V, K>
+template<typename K, typename V>
+class HashMap final : public HashMapBase<K, V>
 {
 public:
 
-	HashMap() : HashMapBase<V, K>() {}
-	HashMap(int reserve) : HashMapBase<V, K>(reserve) {}
+	HashMap() : HashMapBase<K, V>() {}
+	HashMap(int reserve) : HashMapBase<K, V>(reserve) {}
 	HashMap(const HashMap& other) = delete;
 	~HashMap() = default;
 	HashMap& operator=(const HashMap& other) = delete;
@@ -113,12 +113,12 @@ public:
 };
 
 template<typename V>
-class HashMap<V, char*> final : public HashMapBase<V, char*>
+class HashMap<char*, V> final : public HashMapBase<char*, V>
 {
 public:
 
-	HashMap() : HashMapBase<V, char*>() {}
-	HashMap(int reserve) : HashMapBase<V, char*>(reserve) {}
+	HashMap() : HashMapBase<char*, V>() {}
+	HashMap(int reserve) : HashMapBase<char*, V>(reserve) {}
 	HashMap(const HashMap& other) = delete;
 	~HashMap() = default;
 	HashMap& operator=(const HashMap& other) = delete;
@@ -129,8 +129,8 @@ private:
 
 };
 
-template<typename V, typename K>
-HashMapBase<V, K>::HashMapBase()
+template<typename K, typename V>
+HashMapBase<K, V>::HashMapBase()
 	: bucketSize(defaultReserve)
 {
 	dataArr = new Data*[defaultReserve];
@@ -138,8 +138,8 @@ HashMapBase<V, K>::HashMapBase()
 	InitializeArray();
 }
 
-template<typename V, typename K>
-HashMapBase<V, K>::HashMapBase(int reserve)
+template<typename K, typename V>
+HashMapBase<K, V>::HashMapBase(int reserve)
 	: bucketSize(reserve)
 {
 	dataArr = new Data*[reserve];
@@ -147,8 +147,8 @@ HashMapBase<V, K>::HashMapBase(int reserve)
 	InitializeArray();
 }
 
-template<typename V, typename K>
-HashMapBase<V, K>::~HashMapBase()
+template<typename K, typename V>
+HashMapBase<K, V>::~HashMapBase()
 {
 	if (dataArr != nullptr)
 	{
@@ -157,8 +157,8 @@ HashMapBase<V, K>::~HashMapBase()
 	}
 }
 
-template<typename V, typename K>
-bool HashMapBase<V, K>::Add(K key, V value)
+template<typename K, typename V>
+bool HashMapBase<K, V>::Add(K key, V value)
 {
 	unsigned int index = GetHashIndex(key);
 
@@ -182,8 +182,8 @@ bool HashMapBase<V, K>::Add(K key, V value)
 	return false;
 }
 
-template<typename V, typename K>
-bool HashMapBase<V, K>::Remove(K key)
+template<typename K, typename V>
+bool HashMapBase<K, V>::Remove(K key)
 {
 	unsigned int index = GetHashIndex(key);
 
@@ -238,8 +238,8 @@ bool HashMapBase<V, K>::Remove(K key)
 	return false;
 }
 
-template<typename V, typename K>
-bool HashMapBase<V, K>::GetValue(K key, V* outValue)
+template<typename K, typename V>
+bool HashMapBase<K, V>::GetValue(K key, V* outValue)
 {
 	unsigned int index = GetHashIndex(key);
 
@@ -282,8 +282,8 @@ bool HashMapBase<V, K>::GetValue(K key, V* outValue)
 	return false;
 }
 
-template<typename V, typename K>
-float HashMapBase<V, K>::GetLoadRatio()
+template<typename K, typename V>
+float HashMapBase<K, V>::GetLoadRatio()
 {
 	int loadCount = 0;
 
@@ -300,8 +300,8 @@ float HashMapBase<V, K>::GetLoadRatio()
 	return result;
 }
 
-template<typename V, typename K>
-unsigned int HashMapBase<V, K>::GetHashIndex(K key)
+template<typename K, typename V>
+unsigned int HashMapBase<K, V>::GetHashIndex(K key)
 {
 	unsigned __int64 conKey = (unsigned __int64)key;
 	unsigned __int64 hash = FNVOffset;
@@ -317,8 +317,8 @@ unsigned int HashMapBase<V, K>::GetHashIndex(K key)
 	return hash % bucketSize;
 }
 
-template<typename V, typename K>
-bool HashMapBase<V, K>::GetLastData(int index, Data** outPtr)
+template<typename K, typename V>
+bool HashMapBase<K, V>::GetLastData(int index, Data** outPtr)
 {
 	Data* curPtr = dataArr[index];
 
@@ -338,8 +338,8 @@ bool HashMapBase<V, K>::GetLastData(int index, Data** outPtr)
 	return false;
 }
 
-template<typename V, typename K>
-void HashMapBase<V, K>::LinkRemove(Data* prevNode, Data* curNode)
+template<typename K, typename V>
+void HashMapBase<K, V>::LinkRemove(Data* prevNode, Data* curNode)
 {
 	if (curNode->nextData == nullptr)
 	{
@@ -355,8 +355,8 @@ void HashMapBase<V, K>::LinkRemove(Data* prevNode, Data* curNode)
 	}
 }
 
-template<typename V, typename K>
-void HashMapBase<V, K>::InitializeArray()
+template<typename K, typename V>
+void HashMapBase<K, V>::InitializeArray()
 {
 	for (int i = 0; i < bucketSize; ++i)
 	{
@@ -365,21 +365,21 @@ void HashMapBase<V, K>::InitializeArray()
 }
 
 template<typename V>
-unsigned int HashMap<V, char*>::GetHashIndex(char* key)
+unsigned int HashMap<char*, V>::GetHashIndex(char* key)
 {
 	unsigned __int64 conKey = (unsigned __int64)key;
-	unsigned __int64 hash = HashMapBase<V, char*>::FNVOffset;
+	unsigned __int64 hash = HashMapBase<char*, V>::FNVOffset;
 	
 	int stringLen = strlen(key);
 	for (int i = 0; i < stringLen; ++i)
 	{
 		unsigned __int8 bytehash = static_cast<unsigned __int8>(key[i]);
 
-		hash *= HashMapBase<V, char*>::FNVPrime;
+		hash *= HashMapBase<char*, V>::FNVPrime;
 		hash ^= bytehash;
 	}
 
-	return hash % HashMapBase<V, char*>::bucketSize;
+	return hash % HashMapBase<char*, V>::bucketSize;
 
 	return 0;
 }

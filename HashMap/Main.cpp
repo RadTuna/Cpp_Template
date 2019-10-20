@@ -14,7 +14,7 @@ int main()
 
 	srand(static_cast<unsigned int>(time(nullptr)));
 
-	HashMap<int, char*> MyMap;
+	HashMap<char*, int> MyMap;
 	for (int i = 0; i < MaxLoad; ++i)
 	{
 		int randVal = rand() % MaxLoad;
