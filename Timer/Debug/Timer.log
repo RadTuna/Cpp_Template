@@ -1,0 +1,12 @@
+﻿  Main.cpp
+C:\Code\Cpp\Cpp_Template\Timer\Timer.h(38,25): error C2661: 'std::thread::thread': 오버로드된 함수에서 5개의 인수를 사용하지 않습니다.
+C:\Code\Cpp\Cpp_Template\Timer\Main.cpp(14): message : 컴파일되는 함수 템플릿 인스턴스화 'void Timer::SetTimer<void(__cdecl *)(int,float),int,float>(int,Fn,int,float)'에 대한 참조를 확인하세요.
+C:\Code\Cpp\Cpp_Template\Timer\Main.cpp(14): message :         with
+C:\Code\Cpp\Cpp_Template\Timer\Main.cpp(14): message :         [
+C:\Code\Cpp\Cpp_Template\Timer\Main.cpp(14): message :             Fn=void (__cdecl *)(int,float)
+C:\Code\Cpp\Cpp_Template\Timer\Main.cpp(14): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\chrono(669): message : 컴파일되는 클래스 템플릿 인스턴스화 'std::chrono::duration<double,std::ratio<1,1>>'에 대한 참조를 확인하세요.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\chrono(177): message : 컴파일되는 클래스 템플릿 인스턴스화 'std::chrono::duration<__int64,std::nano>'에 대한 참조를 확인하세요.
+  Timer.cpp
+  코드를 생성하고 있습니다...
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\chrono(647): message : 컴파일되는 클래스 템플릿 인스턴스화 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::steady_clock::duration>'에 대한 참조를 확인하세요.

@@ -29,10 +29,10 @@ private:
 
 public:
 
-	HashMapBase();
-	HashMapBase(int reserve);
+	explicit HashMapBase();
+	explicit HashMapBase(int reserve);
 	HashMapBase(const HashMapBase& other) = delete;
-	~HashMapBase();
+	virtual ~HashMapBase();
 	HashMapBase& operator=(const HashMapBase& other) = delete;
 
 	/*
@@ -104,8 +104,8 @@ class HashMap final : public HashMapBase<K, V>
 {
 public:
 
-	HashMap() : HashMapBase<K, V>() {}
-	HashMap(int reserve) : HashMapBase<K, V>(reserve) {}
+	explicit HashMap() : HashMapBase<K, V>() {}
+	explicit HashMap(int reserve) : HashMapBase<K, V>(reserve) {}
 	HashMap(const HashMap& other) = delete;
 	~HashMap() = default;
 	HashMap& operator=(const HashMap& other) = delete;
@@ -117,8 +117,8 @@ class HashMap<char*, V> final : public HashMapBase<char*, V>
 {
 public:
 
-	HashMap() : HashMapBase<char*, V>() {}
-	HashMap(int reserve) : HashMapBase<char*, V>(reserve) {}
+	explicit HashMap() : HashMapBase<char*, V>() {}
+	explicit HashMap(int reserve) : HashMapBase<char*, V>(reserve) {}
 	HashMap(const HashMap& other) = delete;
 	~HashMap() = default;
 	HashMap& operator=(const HashMap& other) = delete;
