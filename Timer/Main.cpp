@@ -11,11 +11,23 @@ int main()
 {
 	Timer MyTimer;
 
-	MyTimer.SetTimer(1000, TestFunc, 10, 1.5f);
+	MyTimer.SetTimer(500, TestFunc, 10, 1.5f);
 
-	while(true) {}
+	// 검사용 출력
+	std::cout << "Main : Complete ThreadCreate" << std::endl;
+
+	int Count = 0;
+	while (Count < 1000000000)
+	{
+		Count++;
+	}
+
+	// 검사용 출력
+	std::cout << "Main : LoopEnd!" << std::endl;
 
 	MyTimer.ClearTimer();
+
+	while (true) {}
 
 	return 0;
 

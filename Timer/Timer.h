@@ -20,7 +20,7 @@ public:
 private:
 
 	template<typename Fn, typename... Args>
-	void LoopTimer(Timer* pThis, Fn InFunc, Args... InFuncArgs);
+	static void LoopTimer(Timer* pThis, Fn InFunc, Args... InFuncArgs);
 
 private:
 
@@ -35,7 +35,8 @@ void Timer::SetTimer(int InTimerInterval, Fn InFunc, Args... InFuncArgs)
 	bIsTimerEnd = false;
 	TimerInterval = InTimerInterval;
 
-	std::thread TimerThread(&Timer::LoopTimer, this, InFunc, InFuncArgs...);
+	std::thread TimerThread(&Timer::LoopTimer<Fn, Args...>, this, InFunc, InFuncArgs...);
+	TimerThread.detach();
 }
 
 template<typename Fn, typename... Args>
