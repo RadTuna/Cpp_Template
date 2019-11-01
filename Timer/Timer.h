@@ -29,6 +29,17 @@ private:
 
 };
 
+Timer::Timer()
+	: TimerInterval(0),
+	bIsTimerEnd(false)
+{
+}
+
+void Timer::ClearTimer()
+{
+	bIsTimerEnd = true;
+}
+
 template<typename Fn, typename... Args>
 void Timer::SetTimer(int InTimerInterval, Fn InFunc, Args... InFuncArgs)
 {

@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sort", "Sort\Sort.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Timer", "Timer\Timer.vcxproj", "{A6354B17-1B87-421A-8B4B-B2AC0E3558A6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Delegate", "Delegate\Delegate.vcxproj", "{48D7DBE8-3A56-4CFD-A179-492BE1CA4FA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{A6354B17-1B87-421A-8B4B-B2AC0E3558A6}.Release|x64.Build.0 = Release|x64
 		{A6354B17-1B87-421A-8B4B-B2AC0E3558A6}.Release|x86.ActiveCfg = Release|Win32
 		{A6354B17-1B87-421A-8B4B-B2AC0E3558A6}.Release|x86.Build.0 = Release|Win32
+		{48D7DBE8-3A56-4CFD-A179-492BE1CA4FA3}.Debug|x64.ActiveCfg = Debug|x64
+		{48D7DBE8-3A56-4CFD-A179-492BE1CA4FA3}.Debug|x64.Build.0 = Debug|x64
+		{48D7DBE8-3A56-4CFD-A179-492BE1CA4FA3}.Debug|x86.ActiveCfg = Debug|Win32
+		{48D7DBE8-3A56-4CFD-A179-492BE1CA4FA3}.Debug|x86.Build.0 = Debug|Win32
+		{48D7DBE8-3A56-4CFD-A179-492BE1CA4FA3}.Release|x64.ActiveCfg = Release|x64
+		{48D7DBE8-3A56-4CFD-A179-492BE1CA4FA3}.Release|x64.Build.0 = Release|x64
+		{48D7DBE8-3A56-4CFD-A179-492BE1CA4FA3}.Release|x86.ActiveCfg = Release|Win32
+		{48D7DBE8-3A56-4CFD-A179-492BE1CA4FA3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
