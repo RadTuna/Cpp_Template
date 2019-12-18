@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithm", "Algorithm\Algo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Utility", "Utility\Utility.vcxproj", "{369F17F3-966E-4EA3-9E8D-6106E1DF8F97}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Physics", "Physics\Physics.vcxproj", "{E752CBDF-43D1-46D6-8295-0CF1AAD9208A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{369F17F3-966E-4EA3-9E8D-6106E1DF8F97}.Release|x64.Build.0 = Release|x64
 		{369F17F3-966E-4EA3-9E8D-6106E1DF8F97}.Release|x86.ActiveCfg = Release|Win32
 		{369F17F3-966E-4EA3-9E8D-6106E1DF8F97}.Release|x86.Build.0 = Release|Win32
+		{E752CBDF-43D1-46D6-8295-0CF1AAD9208A}.Debug|x64.ActiveCfg = Debug|x64
+		{E752CBDF-43D1-46D6-8295-0CF1AAD9208A}.Debug|x64.Build.0 = Debug|x64
+		{E752CBDF-43D1-46D6-8295-0CF1AAD9208A}.Debug|x86.ActiveCfg = Debug|Win32
+		{E752CBDF-43D1-46D6-8295-0CF1AAD9208A}.Debug|x86.Build.0 = Debug|Win32
+		{E752CBDF-43D1-46D6-8295-0CF1AAD9208A}.Release|x64.ActiveCfg = Release|x64
+		{E752CBDF-43D1-46D6-8295-0CF1AAD9208A}.Release|x64.Build.0 = Release|x64
+		{E752CBDF-43D1-46D6-8295-0CF1AAD9208A}.Release|x86.ActiveCfg = Release|Win32
+		{E752CBDF-43D1-46D6-8295-0CF1AAD9208A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
