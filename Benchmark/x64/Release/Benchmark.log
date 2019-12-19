@@ -1,0 +1,7 @@
+﻿  TestMain.cpp
+  Generating code
+  9 of 27 functions (33.3%) were compiled, the rest were copied from previous compilation.
+    4 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Benchmark.vcxproj -> C:\Code\Cpp\Cpp_Template\x64\Release\Benchmark.exe
